@@ -27,7 +27,7 @@ def list_files(directory, ext):
     return files
 
 
-def find_tab_files(directory):
+def list_tab_files(directory):
     """Find all Tableau files in directory. Return as dictionary of Workbooks and Datasources.
     """
 
