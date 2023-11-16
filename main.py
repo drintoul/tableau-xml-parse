@@ -1,6 +1,5 @@
-import files
-import tableau
-import excel
+from files import create_directory, list_tab_files, unzip_packages, copy_unpackaged
+from tableau import process_workbooks
 
 # Create directories
 assert create_directory("Unpackaged"), "Create directory failed"
@@ -17,8 +16,8 @@ assert unzip_packages(files["twbx"], "Unpackaged"), "Unzipping failed"
 assert copy_unpackaged(files["twb"], "Unpackaged"), "Copying failed"
 
 # Get new list of Unpackaged Workbooks
-files = list_take_files("Unpackaged")
+files = list_tab_files("Unpackaged")
 assert files, "No files returned"
 
 for wb in files["twb"]:
-  process_workbooks(wb)
+    process_workbooks(wb)
