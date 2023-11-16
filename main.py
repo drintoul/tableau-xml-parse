@@ -19,5 +19,6 @@ assert copy_unpackaged(files["twb"], "Unpackaged"), "Copying failed"
 files = list_tab_files("Unpackaged")
 assert files, "No files returned"
 
+# Main Loop
 for wb in files["twb"]:
     process_workbooks(wb)
