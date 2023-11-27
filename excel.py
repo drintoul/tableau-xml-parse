@@ -6,7 +6,7 @@ def to_df(fields):
 
     try:
 
-        df = pd.DataFrame(fields, columns=["Field", "Role", "DataType", "Calculation"])
+        df = pd.DataFrame(fields, columns=["Field", "Hidden", "Role", "DataType", "Calculation"])
         df["DataType"] = df["DataType"].str.replace("real", "float")
 
         return df
