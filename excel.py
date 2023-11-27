@@ -59,3 +59,34 @@ def summarize_excel(directory):
 
         print(e)
         return False
+
+
+def colorize_and_format(filename):
+    """Style Excel file
+    """
+
+    import openpyxl as xl
+    from openpyxl.styles import Alignment
+
+    # lightblue, red, orange, purple, olive, aqua, navy
+    colors = ["4F81BD", "C0504D", "F79646", "8064A2", "98BB59", "4BACC6", "1F497d"]
+
+    column_to_wrap = "E"
+
+    wb = xl.load_workbook(filename)
+    sheetnames = wb.sheetnames
+
+    for i, ws in enumerate(sheetnames):
+
+        wb[ws].sheet_properties.tabColor = colors[i]
+        wb[ws].column_dimensions["A"].width = 80
+        wb[ws].column_dimensions["B"].width = 20
+        wb[ws].column_dimensions["C"].width = 20
+        wb[ws].column_dimensions["D"].width = 20
+        wb[ws].column_dimensions["E"].width = 120
+
+        for cell in wb[ws][column_to_wrap]:
+            cell.alignment = Alignment(wrap_text=True)
+
+    wb.save(filename)
+        
