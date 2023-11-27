@@ -1,7 +1,7 @@
 # tableau
-Process Tableau Workbooks' XML programmatically
+<p>Unzip all packaged workbooks, copy to a single directory, then systematically parse each Tableau Workbook XML file looking for fields and calculations. Output as Excel.
 
-In addition to main.py, there are three files with specific functions:
+<p>In addition to main.py, there are three files with specific functions:
 
 <h2>file</h2>
 <ul>
