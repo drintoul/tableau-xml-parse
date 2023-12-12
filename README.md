@@ -1,4 +1,5 @@
-# tableau
+# tableau-xml-parse
+
 <p>Unzip all packaged workbooks, copy to a single directory, then systematically parse each Tableau Workbook XML file looking for fields and calculations. Output as Excel.
 
 <p>In addition to main.py, there are three files with specific functions:
