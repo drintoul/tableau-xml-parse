@@ -232,12 +232,6 @@ Errors are reported so that a problem with an individual file does not silently 
 - Add optional validation against published Tableau workbook schemas.
 - Produce a consolidated cross-workbook dependency report for large Tableau estates.
 
-## Contributing
-
-Issues and pull requests are welcome.
-
-If you encounter a Tableau workbook structure the parser does not handle correctly, a minimal sanitized example is especially useful for improving compatibility.
-
 ## License
 
 MIT License © 2023 Dave Rintoul
