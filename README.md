@@ -226,4 +226,4 @@ In this case, parsing XML was the mechanism. The actual objective was giving dat
 
 ## License
 
-MIT License © 2023 Dave Rintoul
+MIT License © 2023 David R. Rintoul
