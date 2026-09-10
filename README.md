@@ -6,15 +6,15 @@ This Python tool inspects Tableau `.twb` and `.twbx` workbooks, extracts datasou
 
 The goal is straightforward: **make schema-impact analysis practical across large collections of Tableau workbooks so database changes are less likely to break dashboards unexpectedly.**
 
-## Why I Built This
+### Why I Built This
 
-I built this tool to solve a practical enterprise problem: database administrators needed to modify and refactor database schemas without having a reliable way to determine which Tableau workbooks depended on the fields being changed.
+In a properly governed Tableau environment, published workbooks, ownership, versioning, and data dependencies can be managed centrally through Tableau Server. That wasn't the environment I encountered.
 
-In an environment with hundreds of workbooks, manually opening each workbook and tracing its fields and calculations back to datasources was not realistic. Tableau workbook files contain much of this metadata in XML, so the process could be automated.
+Over time, shared network drives had become a repository for hundreds of unmanaged and unversioned Tableau workbooks. Database engineers needed to modify and refactor schemas, but there was no reliable inventory showing which workbooks, dashboards, fields, or calculations depended on the affected database objects. Determining the impact required manual coordination between database engineers and dashboard developers—and depended heavily on people knowing where old workbook files were stored and whether they were still in use.
 
-The analyzer extracts that metadata into structured Excel reports, giving engineering teams a searchable inventory they can use during database migrations, schema refactoring, column renames, and other changes that may affect downstream dashboards.
+I built Tableau XML Parse to analyze the underlying `.twb` XML files directly, extract their database and field dependencies, and turn that otherwise unmanaged collection of workbooks into something that could be searched and assessed programmatically.
 
-This is intended to **support dependency and impact analysis**. It does not guarantee that a database change is safe; teams should still validate affected workbooks and dashboards before deploying schema changes.
+The immediate goal was impact analysis: before changing a database schema, engineers could identify potentially affected Tableau assets and the people responsible for them. More broadly, the project demonstrated how automation could recover useful dependency information from an analytics environment where normal governance, configuration management, and version control had broken down.
 
 ## What It Does
 
