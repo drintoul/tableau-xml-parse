@@ -1,0 +1,28 @@
+name: Decline pull requests
+
+# This is a solo project: pull requests are not accepted.
+# Any PR opened against this repo is closed automatically.
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+permissions:
+  pull-requests: write
+  issues: write  # required for issues.createComment used to post the closing comment
+
+jobs:
+  close:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const number = context.payload.pull_request.number;
+            await github.rest.issues.createComment({
+              owner, repo, issue_number: number,
+              body: "Thanks for the interest! This is a solo project and I don't accept pull requests — closing this automatically. Feel free to fork the repo for your own use."
+            });
+            await github.rest.pulls.update({
+              owner, repo, pull_number: number, state: "closed"
+            });
